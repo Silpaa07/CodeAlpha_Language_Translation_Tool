@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalkiO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+        </label>
+
+        <h1>TakiO</h1>
+
+        <div class="input-section card">
+            <textarea id="sourceText" placeholder="Enter text to translate..." rows="5"></textarea> <div class="language-selection">
+                <label for="sourceLanguage">Source Language:</label>
+                <select id="sourceLanguage">
+                    </select>
+                <label for="targetLanguage">Target Language:</label>
+                <select id="targetLanguage">
+                    </select>
+            </div>
+            <button id="translateButton">Translate</button>
+        </div>
+
+        <div class="output-section card">
+            <h2>Translated Text:</h2>
+            <textarea id="translatedText" rows="5" readonly></textarea> <div class="output-actions">
+                <button id="copyButton">Copy Translated Text</button>
+                <button id="textToSpeechButton">Speak Translated Text</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
