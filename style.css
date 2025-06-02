@@ -1,0 +1,370 @@
+/* CSS Variables for Theming */
+:root {
+    /* Default Mode Colors (now a black/dark theme) */
+    --bg-color-light: WHITE; /* Black background */
+    --card-bg-light: BLACK; /* Darker card background */
+    --text-color-light: #f0f0f0; /* Soft white text */
+    --border-color-light: #555555; /* Medium gray border */
+    --placeholder-color-light: #b0b0b0;
+    --button-bg-light: #333333; /* Dark gray button */
+    --button-hover-light: #444444;
+    --shadow-color-light: rgba(255, 255, 255, 0.05); /* Very subtle light shadow */
+    --textarea-bg-light: #0d0d0d; /* Even darker textarea background */
+    --toggle-off-bg-light: #666666; /* Toggle switch off state */
+    --toggle-on-bg-light: #888888; /* Toggle switch on state */
+}
+
+body.dark-mode {
+    /* Dark Mode (White Glow Theme) - this is what the toggle switches to */
+    --bg-color-dark: black; /* Keeping consistent dark background */
+    --card-bg-dark: #1e1e1e; /* Keeping consistent dark card background */
+    --text-color-dark: #f0f0f0; /* Keeping consistent soft white text */
+    --border-color-dark: #a0a0a0; /* Light gray border for accents */
+    --placeholder-color-dark: #d0d0d0;
+    --button-bg-dark: #2c2c2c; /* Dark button background */
+    --button-hover-dark: #444444; /* Darker hover */
+    --glow-color: #ffffff; /* Pure white for glows/shadows */
+    --textarea-bg-dark: #0d0d0d; /* Even darker textarea background */
+    --toggle-off-bg-dark: #555555; /* Toggle switch off state in dark mode */
+    --toggle-on-bg-dark: #777777; /* Toggle switch on state in dark mode */
+}
+
+
+/* Reset and base styles - uses default mode variables */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    transition: background-color 0.4s ease, color 0.4s ease;
+
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+/* Dark Mode specific styles (applied when body has class dark-mode) */
+/* Note: These styles now apply the 'white glow' effects over the default black theme */
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+.container {
+    width: 90vw;
+    max-width: 600px;
+    max-height: 90vh;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+
+    /* Default Mode (now black) defaults */
+    background-color: var(--card-bg-light);
+    box-shadow: 0 10px 30px var(--shadow-color-light);
+    border: 1px solid transparent;
+}
+
+body.dark-mode .container {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 0 25px var(--glow-color); /* White glow */
+    border: 1px solid var(--border-color-dark); /* Light gray border */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: inherit;
+    transition: text-shadow 0.4s ease, color 0.4s ease;
+}
+
+body.dark-mode h1 {
+    color: var(--text-color-dark); /* Soft white */
+    text-shadow: 0 0 8px var(--glow-color); /* White text shadow */
+}
+
+h2 {
+    color: inherit;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: text-shadow 0.4s ease, color 0.4s ease;
+}
+
+body.dark-mode h2 {
+    color: var(--text-color-dark); /* Soft white */
+    text-shadow: 0 0 6px var(--glow-color); /* White text shadow */
+}
+
+.card {
+    border-radius: 8px;
+    padding: 10px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+
+    /* Default Mode defaults */
+    background-color: var(--card-bg-light);
+    box-shadow: 0 4px 15px var(--shadow-color-light);
+    border: 1px solid transparent;
+}
+
+body.dark-mode .card {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 0 15px var(--glow-color);
+    border: 1px solid var(--border-color-dark);
+}
+
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    resize: vertical;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+
+    /* Default Mode defaults */
+    background-color: var(--textarea-bg-light);
+    color: var(--text-color-light);
+    border: 1px solid var(--border-color-light);
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+}
+
+body.dark-mode textarea {
+    background-color: var(--textarea-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color-dark);
+    box-shadow: inset 0 0 8px var(--glow-color);
+}
+
+textarea::placeholder {
+    color: var(--placeholder-color-light);
+}
+
+body.dark-mode textarea::placeholder {
+    color: var(--placeholder-color-dark);
+}
+
+.language-selection {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+}
+
+.language-selection > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.language-selection label {
+    color: inherit;
+    font-size: 0.9em;
+}
+
+select {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-top: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+
+    /* Default Mode defaults */
+    background-color: var(--textarea-bg-light);
+    color: var(--text-color-light);
+    border: 1px solid var(--border-color-light);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+body.dark-mode select {
+    background-color: var(--button-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color-dark);
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease, border 0.3s ease;
+
+    /* Default Mode defaults */
+    background-color: var(--button-bg-light);
+    color: var(--text-color-light); /* Buttons now inherit text color */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border: 1px solid transparent;
+}
+
+button:hover {
+    background-color: var(--button-hover-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+body.dark-mode button {
+    background-color: var(--button-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color-dark);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+body.dark-mode button:hover {
+    background-color: var(--button-hover-dark);
+    box-shadow: 0 0 20px var(--glow-color);
+}
+
+.output-actions {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+/* Toggle Switch Styling */
+.toggle-switch {
+    position: absolute;
+    top: 5px; /* Closer to top edge */
+    right: 5px; /* Closer to right edge */
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-switch .slider {
+    width: 40px;
+    height: 22px;
+    border-radius: 22px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    /* Default Mode (now black) default */
+    background-color: var(--toggle-off-bg-light);
+}
+
+.toggle-switch .slider::before {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* Default Mode (now black) default */
+    background-color: var(--text-color-light); /* Circle is light in default black mode */
+    box-shadow: 0 0 3px rgba(255,255,255,0.2);
+}
+
+/* When toggle is checked */
+input:checked + .slider {
+    background-color: var(--toggle-on-bg-light);
+}
+
+input:checked + .slider::before {
+    transform: translateX(18px);
+}
+
+/* Dark Mode (White Glow) specific styles for toggle */
+body.dark-mode .toggle-switch .slider {
+    background-color: var(--toggle-off-bg-dark);
+}
+
+body.dark-mode input:checked + .slider {
+    background-color: var(--toggle-on-bg-dark);
+}
+
+body.dark-mode .slider::before {
+    background-color: var(--glow-color); /* White circle in white glow mode */
+    box-shadow: 0 0 5px var(--glow-color);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        width: 95vw;
+        padding: 10px;
+        gap: 8px;
+    }
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 8px;
+    }
+    h2 {
+        font-size: 1.1em;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .card {
+        padding: 8px;
+    }
+    textarea {
+        width: calc(100% - 10px);
+        padding: 5px;
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+    select, button {
+        padding: 5px 8px;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .language-selection {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .language-selection > div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+    .output-actions {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 5px;
+    }
+    .toggle-switch {
+        position: static;
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .toggle-switch label {
+        margin-right: 5px;
+        font-size: 0.75em;
+    }
+}
